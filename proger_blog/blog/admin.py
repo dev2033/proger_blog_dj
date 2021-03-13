@@ -2,7 +2,6 @@ from django import forms
 from django.contrib import admin
 
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
-from django.forms import ModelForm
 
 from django.utils.safestring import mark_safe
 
@@ -41,7 +40,7 @@ class PostAdmin(admin.ModelAdmin):
               'views', 'created_at')
 
     def get_image(self, obj):
-        """Возвращает картинку новости"""
+        """Возвращает картинку новости или нечего"""
         if obj.image:
             return mark_safe(f'<img src="{obj.image.url}" width="75"')
         else:
@@ -72,11 +71,9 @@ class PostAdmin(admin.ModelAdmin):
 #         fields = '__all__'
 
 
-admin.site.register(Category)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Project)
-
 
 admin.site.site_title = 'Управление сайтом'
 admin.site.site_header = 'Управление сайтом'

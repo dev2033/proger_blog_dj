@@ -3,7 +3,7 @@ from django.urls import reverse
 
 
 class Post(models.Model):
-    """Пост"""
+    """Пост/Запись"""
     tags = models.ManyToManyField(
         'Tag',
         blank=True,
@@ -33,27 +33,8 @@ class Post(models.Model):
         ordering = ["-created_at"]
 
 
-class Category(models.Model):
-    """Виды категорий"""
-    name = models.CharField(
-        'Название категории для главной страницы',
-        max_length=100
-    )
-    content = models.CharField(
-        'Контент',
-        max_length=150,
-        help_text='Краткое описание про категорию'
-    )
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Категория'
-        verbose_name_plural = 'Категории'
-
-
 class Tag(models.Model):
+    """Тэг"""
     title = models.CharField('Тег', max_length=50)
     slug = models.SlugField('Url', max_length=50, unique=True)
 
@@ -70,15 +51,18 @@ class Tag(models.Model):
 
 
 class Project(models.Model):
-    """Проекты"""
-    name = models.CharField(
-        'Название проекта',
-        max_length=100,
+    """Проект"""
+    name = models.CharField('Название проекта', max_length=100)
+    project_technology = models.CharField('Технология проекта', max_length=50)
+    content = models.TextField('Контент')
+    image = models.ImageField(
+        'Изображение',
         blank=True,
         null=True,
+        help_text='Не обязательно, система подставит стандартное изображение'
     )
-    content = models.TextField('Контент')
-    image = models.ImageField(verbose_name='Изображение')
+    objective_of_the_project = models.CharField('Цель проекта', max_length=255)
+    link_to_git = models.CharField('Ссылка на проект', max_length=255)
 
     def __str__(self):
         return str(self.pk) + " " + str(self.name)
