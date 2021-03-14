@@ -53,7 +53,7 @@ class Tag(models.Model):
 class Category(models.Model):
     """Категория проекта"""
     name = models.CharField('Название категории', max_length=100)
-    slug = models.SlugField('Url', max_length=50, unique=True)
+    slug = models.SlugField('Url', max_length=50, unique=False)
     description = models.CharField('Краткое описание категории', max_length=255)
 
     def __str__(self):
@@ -85,6 +85,9 @@ class Project(models.Model):
 
     def __str__(self):
         return str(self.pk) + " " + str(self.name)
+
+    def get_absolute_url(self):
+        return reverse('view_project', kwargs={"pk": self.pk})
 
     class Meta:
         verbose_name = 'Проект'

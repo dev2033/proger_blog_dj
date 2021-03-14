@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+  <section class="page-title">
+    <div class="container">
+          <h1>{{ project.name }}</h1>
+    </div>
+  </section>
+
+  <section class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <p>{% if project.image %}
+                  <img src="{{ project.image.url }}" class="img-responsive img-border" alt="Free HTML5 Template by uicookies.com">
+                  {% else %}
+                  <img src="https://w-dog.ru/wallpapers/0/2/432904767798717/privet-tek-texnologii-plata-mozg.jpg"
+                       class="img-responsive img-border" alt="Free HTML5 Template by uicookies.com">
+                  {% endif %}</p>
+           <p>{{ project.content }}</p>
+          <p>
+              <a href="{{ project.link_to_git }}" target="_blank" role="button" class="btn btn-primary btn-sm">
+              Перейти на GitHub
+              <i class="icon-github"></i>
+          </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- END section cta -->
+
+  <section class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 section-heading probootstrap-animate">
+          <h2>The Projects</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 probootstrap-animate">
+          <div class="probootstrap-card">
+            <div class="probootstrap-card-media">
+              <a href="#"><img src="img/slider_1.jpg" class="img-responsive img-border" alt="Free HTML5 Template by uicookies.com"></a>
+            </div>
+            <div class="probootstrap-card-text">
+              <h2 class="probootstrap-card-heading mb0">A Clever Bike</h2>
+              <p class="category">Design &amp; Model</p>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+              <p><a href="#">View details</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 probootstrap-animate">
+          <div class="probootstrap-card">
+            <div class="probootstrap-card-media">
+              <a href="#"><img src="img/slider_2.jpg" class="img-responsive img-border" alt="Free HTML5 Template by uicookies.com"></a>
+            </div>
+            <div class="probootstrap-card-text">
+              <h2 class="probootstrap-card-heading mb0">Sleek Spaker</h2>
+              <p class="category">Design</p>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+              <p><a href="#">View details</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 probootstrap-animate">
+          <div class="probootstrap-card">
+            <div class="probootstrap-card-media">
+              <a href="#"><img src="img/slider_3.jpg" class="img-responsive img-border" alt="Free HTML5 Template by uicookies.com"></a>
+            </div>
+            <div class="probootstrap-card-text">
+              <h2 class="probootstrap-card-heading mb0">Black Person</h2>
+              <p class="category">Photography</p>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+              <p><a href="#">View details</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ {% endblock %}

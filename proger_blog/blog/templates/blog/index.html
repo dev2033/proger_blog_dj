@@ -169,7 +169,7 @@
               <h2 class="probootstrap-card-heading mb0">{{ project.name }}</h2>
               <p class="category">{{ project.category }}</p>
               <p>{{ project.content|truncatewords_html:20|safe }}</p>
-              <p><a href="">Читать далее...</a></p>
+              <p><a href="{{ project.get_absolute_url }}">Читать далее...</a></p>
             </div>
           </div>
         </div>
