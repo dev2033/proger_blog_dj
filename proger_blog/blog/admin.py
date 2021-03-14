@@ -20,6 +20,10 @@ class TagAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+
 # class StudioAdmin(admin.ModelAdmin):
 #     form = PostAdminForm
 
@@ -74,6 +78,7 @@ class PostAdmin(admin.ModelAdmin):
 admin.site.register(Post, PostAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Project)
+admin.site.register(Category, CategoryAdmin)
 
 admin.site.site_title = 'Управление сайтом'
 admin.site.site_header = 'Управление сайтом'

@@ -51,44 +51,21 @@
 <section class="probootstrap-section">
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <div class="service left-icon probootstrap-animate">
 
-        <div class="icon">
-          <i class="icon-alarm"></i>
+      {% for category in categories %}
+        <div class="col-md-4">
+          <div class="service left-icon probootstrap-animate">
+            <div class="icon">
+              <i class="icon-code"></i>
+            </div>
+            <div class="text">
+              <h3 class="heading">{{ category.name }}</h3>
+              <p>{{ category.description }}</p>
+            </div>
+          </div>
         </div>
-        <div class="text">
-          <h3 class="heading">Business Strategy</h3>
-          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+    {% endfor %}
 
-        </div>
-
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="service left-icon probootstrap-animate">
-        <div class="icon">
-          <i class="icon-laptop3"></i>
-        </div>
-        <div class="text">
-          <h3 class="heading">Business Marketing</h3>
-          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="service left-icon probootstrap-animate">
-        <div class="icon">
-          <i class="icon-laptop3"></i>
-        </div>
-        <div class="text">
-          <h3 class="heading">Business Profit</h3>
-          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 </section>
@@ -173,29 +150,32 @@
     </div>
   </div>
   <div class="row">
+
     <!--===========================Последнии 3 проекта===========================-->
-      {% for item in last_projects %}
-    <div class="col-md-4 probootstrap-animate">
-      <div class="probootstrap-card">
-        <div class="probootstrap-card-media">
-          <a href="single-page.html">
-              {% if item.image %}
-              <img src="{{ item.image.url }}" class="img-responsive img-border" alt="Free HTML5 Template by uicookies.com">
-              {% else %}
-              <img src="https://w-dog.ru/wallpapers/0/2/432904767798717/privet-tek-texnologii-plata-mozg.jpg" class="img-responsive img-border" alt="Free HTML5 Template by uicookies.com">
-              {% endif %}
-          </a>
+      {% for project in last_projects %}
+        <div class="col-md-4 probootstrap-animate">
+          <div class="probootstrap-card">
+            <div class="probootstrap-card-media">
+              <a href="single-page.html">
+                  {% if project.image %}
+                  <img src="{{ project.image.url }}" class="img-responsive img-border" alt="Free HTML5 Template by uicookies.com">
+                  {% else %}
+                  <img src="https://w-dog.ru/wallpapers/0/2/432904767798717/privet-tek-texnologii-plata-mozg.jpg"
+                       class="img-responsive img-border" alt="Free HTML5 Template by uicookies.com">
+                  {% endif %}
+              </a>
+            </div>
+            <div class="probootstrap-card-text">
+              <h2 class="probootstrap-card-heading mb0">{{ project.name }}</h2>
+              <p class="category">{{ project.category }}</p>
+              <p>{{ project.content|truncatewords_html:20|safe }}</p>
+              <p><a href="">Читать далее...</a></p>
+            </div>
+          </div>
         </div>
-        <div class="probootstrap-card-text">
-          <h2 class="probootstrap-card-heading mb0">{{ item.name }}</h2>
-          <p class="category">{{ item.category }}</p>
-          <p>{{ item.content|truncatewords_html:20|safe }}</p>
-          <p><a href="single-page.html">Читать далее...</a></p>
-        </div>
-      </div>
-    </div>
       {% endfor %}
     <!--===========================Последнии 3 проекта===========================-->
+
   </div>
 </div>
 </section>

@@ -1,6 +1,6 @@
 from django.views.generic import ListView
 
-from .models import Project
+from .models import Project, Category
 
 
 class Home(ListView):
@@ -18,5 +18,6 @@ class Home(ListView):
         projects = context['projects']
         # показывает 3 последних проекта
         context['last_projects'] = projects.order_by('-id')[:3]
+        context['categories'] = Category.objects.all()
         return context
 

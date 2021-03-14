@@ -50,9 +50,28 @@ class Tag(models.Model):
         ordering = ['title']
 
 
+class Category(models.Model):
+    """Категория проекта"""
+    name = models.CharField('Название категории', max_length=100)
+    slug = models.SlugField('Url', max_length=50, unique=True)
+    description = models.CharField('Краткое описание категории', max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'slug': self.slug})
+
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+
+
 class Project(models.Model):
     """Проект"""
     name = models.CharField('Название проекта', max_length=100)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE,
+                                 verbose_name='Категория')
     project_technology = models.CharField('Технология проекта', max_length=50)
     content = models.TextField('Контент')
     image = models.ImageField(
