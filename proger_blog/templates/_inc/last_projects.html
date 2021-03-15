@@ -1,0 +1,37 @@
+ <section class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 section-heading probootstrap-animate">
+          <h2>Последнии проекты</h2>
+        </div>
+      </div>
+      <div class="row">
+
+    <!--===========================Последнии 3 проекта===========================-->
+      {% for project in last_projects %}
+        <div class="col-md-4 probootstrap-animate">
+          <div class="probootstrap-card">
+            <div class="probootstrap-card-media">
+              <a href="{{ project.get_absolute_url }}">
+                  {% if project.image %}
+                  <img src="{{ project.image.url }}" class="img-responsive img-border" alt="Free HTML5 Template by uicookies.com">
+                  {% else %}
+                  <img src="https://w-dog.ru/wallpapers/0/2/432904767798717/privet-tek-texnologii-plata-mozg.jpg"
+                       class="img-responsive img-border" alt="Free HTML5 Template by uicookies.com">
+                  {% endif %}
+              </a>
+            </div>
+            <div class="probootstrap-card-text">
+              <h2 class="probootstrap-card-heading mb0">{{ project.name }}</h2>
+              <p class="category">{{ project.category }}</p>
+              <p>{{ project.content|truncatewords_html:20|safe }}</p>
+              <p><a href="{{ project.get_absolute_url }}">Читать далее...</a></p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    <!--===========================Последнии 3 проекта===========================-->
+
+  </div>
+</div>
+</section>
