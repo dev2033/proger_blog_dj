@@ -11,8 +11,8 @@
 
     <nav role="navigation" class="probootstrap-nav hidden-xs">
       <ul class="probootstrap-main-nav">
-        <li class="active"><a href="{% url 'home' %}">Главная</a></li>
-        <li><a href="{% url 'projects' %}">Проекты</a></li>
+        <li class="{% if request.path == '/' %}active{% endif %}"><a href="{% url 'home' %}">Главная</a></li>
+        <li class="{% if request.path == '/projects/' %}active{% endif %}"><a href="{% url 'projects' %}">Проекты</a></li>
         <li><a href="">Сервисы</a></li>
         <li><a href="">О нас</a></li>
         <li><a href="">Контакты</a></li>
