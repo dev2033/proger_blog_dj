@@ -60,10 +60,10 @@ class GetPostsListView(ListView):
         return context
 
 
-class GetPost(DetailView):
+class PostDetailView(DetailView):
     """Показывает каждый пост отдельно"""
     model = Post
-    template_name = 'blog/blog_post.html'
+    template_name = 'blog/post_detail.html'
     context_object_name = 'post'
     allow_empty = True
 
@@ -73,4 +73,5 @@ class GetPost(DetailView):
         self.object.views = F('views') + 1
         self.object.save()
         self.object.refresh_from_db()
+        context['title'] = 'Proger Blog'
         return context

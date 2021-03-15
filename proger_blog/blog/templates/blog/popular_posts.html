@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 section-heading probootstrap-animate">
+      <h2>Популярные посты</h2>
+    </div>
+  </div>
+
+  <div class="row">
+  {% for post in posts %}
+    <div class="col-md-4 probootstrap-animate">
+      <div class="probootstrap-card">
+        <div class="probootstrap-card-text">
+          <h2 class="probootstrap-card-heading mb0">{{ post.title }}</h2>
+            <p class="category">Автор: admin</p>
+          <p>{{ post.content|truncatewords_html:20|safe }}</p>
+            <p><a href="{{ project.get_absolute_url }}">Читать далее...</a></p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+
+
+

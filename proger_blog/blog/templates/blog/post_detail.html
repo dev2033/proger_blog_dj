@@ -7,8 +7,14 @@
 
   <section class="page-title">
     <div class="container">
-          <h1>{{ project.name }}</h1>
+          <h1>{{ post.title }}</h1>
+
+        <div class="post-meta">
+        <span class="date">{{ post.created_at|date:"j E Y" }} | </span>
+        <span class="">Кол-во просмотров: {{ post.views }}</span>
+      </div>
     </div>
+
   </section>
 
   <section class="probootstrap-section">
@@ -21,24 +27,13 @@
                   <img src="https://w-dog.ru/wallpapers/0/2/432904767798717/privet-tek-texnologii-plata-mozg.jpg"
                        class="img-responsive img-border" alt="Free HTML5 Template by uicookies.com">
                   {% endif %}</p>
-           <p>{{ project.content|safe }}</p>
-          <p>
-              <i class="icon-github"></i>
-              <a href="{{ project.link_to_git }}" target="_blank" role="button" class="btn btn-outline-success">
-              Перейти на GitHub
-          </a>
-          <p>
-            <i class="icon-telegram"></i>
-              <a href="https://t.me/developerPy3" role="button" class="btn btn-outline-primary">
-              Связь с разработчиком
-          </a>
-          </p>
+           <p>{{ post.content|safe }}</p>
         </div>
       </div>
     </div>
   </section>
-  
-{% include 'blog/last_projects.html' %}
+
+ {% include '_inc/custom_tags.html' %}
 
  {% endblock %}
 

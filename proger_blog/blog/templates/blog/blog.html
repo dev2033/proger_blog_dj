@@ -38,7 +38,7 @@
                         <span class="date">{{ post.created_at|date:"j E Y" }}</span>
                         <span class="">Кол-во просмотров: {{ post.views }}</span>
                     </div>
-                      <p><a href="">Читать далее...</a></p>
+                      <p><a href="{{ post.get_absolute_url }}">Читать далее...</a></p>
                     </div>
                   </div>
                 </div>
