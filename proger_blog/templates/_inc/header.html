@@ -15,7 +15,7 @@
         <li class="{% if request.path == '/projects/' %}active{% endif %}"><a href="{% url 'projects' %}">Проекты</a></li>
         <li class="{% if request.path == '/posts/' %}active{% endif %}"><a href="{% url 'posts' %}">Блог</a></li>
         <li><a href="">О нас</a></li>
-        <li><a href="">Контакты</a></li>
+        <li class="{% if request.path == '/posts/' %}active{% endif %}"><a href="{% url 'contact' %}">Контакты</a></li>
       </ul>
 
       <div class="extra-text visible-xs">
