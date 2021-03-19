@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
 
     'blog',
+    'contact',
 ]
 
 MIDDLEWARE = [
@@ -101,23 +102,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
-
-# send email settings
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_ADMIN')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD_ADMIN')
-EMAIL_PORT = 587
-
-# celery|redis settings
-REDIS_HOST = '0.0.0.0'
-REDIS_PORT = '6379'
-CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
-CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
-CELERY_RESULT_BACKENDS = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
 
 
 # ckeditor settings
