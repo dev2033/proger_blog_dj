@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
 
     'blog',
+    'contact',
 ]
 
 MIDDLEWARE = [
@@ -101,6 +102,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> d5bf6db3460f1f693429717806833b864b8df25a
 # ckeditor settings
 CKEDITOR_CONFIGS = {
     'default': {
