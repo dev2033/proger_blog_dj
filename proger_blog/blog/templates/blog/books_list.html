@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+    <section class="probootstrap-slider flexslider">
+        <ul class="slides">
+          <li style="background-image: url({% static 'img/slider_1.jpg' %});">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <div class="slides-text probootstrap-animate">
+                    <h2>Книги</h2>
+                    <p>Free HTML5 Template by <a href=""></a>. Far far away, behind the word mountains, far from the countries.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+    </section>
+    <section class="probootstrap-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 section-heading probootstrap-animate">
+              <h2>Выберите книгу</h2>
+            </div>
+          </div>
+          <div class="row">
+<!--==============================Список проектов==============================-->
+              {% for book in books %}
+                <div class="col-md-4 col-sm-6 probootstrap-animate">
+                  <div class="probootstrap-card">
+                    <div class="probootstrap-card-media">
+                      <a href="{{ book.get_absolute_url }}">
+                          {% if book.image %}
+                              <img src="{{ book.image.url }}" class="img-responsive img-border" alt="Free HTML5 Template by uicookies.com">
+                          {% else %}
+                              <img src="https://w-dog.ru/wallpapers/0/2/432904767798717/privet-tek-texnologii-plata-mozg.jpg"
+                               class="img-responsive img-border" alt="Free HTML5 Template by uicookies.com">
+                          {% endif %}
+                      </a>
+                    </div>
+                    <div class="probootstrap-card-text">
+                      <h2 class="probootstrap-card-heading mb0">{{ book.name }}</h2>
+                      <p class="category">{{ book.category }}</p>
+                      <p>{{ book.short_description|truncatewords_html:20|safe }}</p>
+                      <p><a href="{{ book.get_absolute_url }}">Перейти</a></p>
+                    </div>
+                  </div>
+                </div>
+            {% endfor %}
+<!--==============================Список проектов==============================-->
+          </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="probootstrap-cta probootstrap-animate border-bototm-none">
+          <h2 class="mb20">Do you have amazing project in mind? Let's get started.</h2>
+          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+          <p><a href="#" role="button" class="btn btn-primary">Get In Touch</a></p>
+        </div>
+    </div>
+
+ {% endblock %}

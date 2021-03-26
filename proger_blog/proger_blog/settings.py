@@ -21,9 +21,9 @@ INSTALLED_APPS = [
     'crispy_forms',
     'ckeditor',
     'ckeditor_uploader',
+    'debug_toolbar',
 
     'blog',
-    'contact',
 ]
 
 MIDDLEWARE = [
@@ -34,6 +34,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'proger_blog.urls'
@@ -102,11 +103,17 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
-<<<<<<< HEAD
-=======
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'django_cache'),
+    }
+}
 
->>>>>>> d5bf6db3460f1f693429717806833b864b8df25a
 # ckeditor settings
 CKEDITOR_CONFIGS = {
     'default': {

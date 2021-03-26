@@ -13,7 +13,7 @@ class Post(models.Model):
     title = models.CharField("Название поста", max_length=100)
     slug = models.SlugField('Url', max_length=255, unique=True)
     content = models.TextField('Контент', blank=True)
-    views = models.IntegerField('Колличество просмотров', default=0)
+    views = models.IntegerField('Количество просмотров', default=0)
     image = models.ImageField("Фото", blank=True, null=True,
                               help_text='Не обязательно!')
     created_at = models.DateTimeField(
@@ -82,6 +82,11 @@ class Project(models.Model):
     )
     objective_of_the_project = models.CharField('Цель проекта', max_length=255)
     link_to_git = models.CharField('Ссылка на проект', max_length=255)
+    file_project = models.FileField('Загрузка файлов проекта',
+                                    help_text='Не обязательно',
+                                    upload_to='file_project/%y/%m/%d/',
+                                    null=True,
+                                    blank=True)
 
     def __str__(self):
         return str(self.pk) + " " + str(self.name)
@@ -93,3 +98,52 @@ class Project(models.Model):
         verbose_name = 'Проект'
         verbose_name_plural = 'Проекты'
         ordering = ['-name']
+
+
+class BookCategory(models.Model):
+    """Категории книг"""
+    name = models.CharField('Название категории', max_length=100)
+    slug = models.SlugField('Url', max_length=50, unique=False,
+                            help_text='Заполняется автоматически')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Категория книги'
+        verbose_name_plural = 'Категории книг'
+
+    def get_absolute_url(self):
+        return reverse('book_category', kwargs={'slug': self.slug})
+
+
+class Book(models.Model):
+    """Книга"""
+    category = models.ForeignKey(BookCategory, verbose_name='Категория',
+                                 on_delete=models.CASCADE)
+    name = models.CharField('Название книги', max_length=200)
+    slug = models.SlugField('Url', max_length=50, unique=False,
+                            help_text='Заполняется автоматически')
+    author = models.CharField('Автор', max_length=250)
+    short_description = models.TextField(
+        'Краткое описание',
+        help_text='Краткое описание книги, рекомендовано до 500 символов'
+    )
+    image = models.ImageField(
+        'Изображение',
+        upload_to='books/img/%y/%m/%d/',
+        blank=True,
+        null=True,
+        help_text='Не обязательно! Фото будет поставлено автоматически'
+    )
+    book_file = models.FileField('Файл с книгой', upload_to='books/%y/%m/%d/')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Книга'
+        verbose_name_plural = 'Книги'
+
+    def get_absolute_url(self):
+        return reverse('book', kwargs={'slug': self.slug})

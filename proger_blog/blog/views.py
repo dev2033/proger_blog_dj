@@ -1,7 +1,8 @@
+# from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F
 from django.views.generic import ListView, DetailView
 
-from .models import Project, Category, Post
+from .models import Project, Category, Post, Book
 
 
 class Home(ListView):
@@ -65,7 +66,6 @@ class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/post_detail.html'
     context_object_name = 'post'
-    allow_empty = True
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -73,5 +73,29 @@ class PostDetailView(DetailView):
         self.object.views = F('views') + 1
         self.object.save()
         self.object.refresh_from_db()
-        context['title'] = 'Proger Blog'
+        context['title'] = Post.objects.get(slug=self.kwargs['slug'])
+        return context
+
+
+class BooksListView(ListView):
+    """Выводит все книги"""
+    model = Book
+    template_name = 'blog/books_list.html'
+    context_object_name = 'books'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Proger Blog : Книги'
+        return context
+
+
+class BookDetailView(DetailView):
+    """Отображает конкретную книгу"""
+    model = Book
+    template_name = 'blog/book_detail.html'
+    context_object_name = 'book'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = Book.objects.get(slug=self.kwargs['slug'])
         return context

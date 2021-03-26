@@ -33,6 +33,14 @@
               Связь с разработчиком
           </a>
           </p>
+            {% if project.file_project %}
+               <p>
+                  <i class="icon-download"></i>
+                  <a href="{{ project.file_project.url }}" download role="button" class="btn btn-outline-primary">
+                  Скачать проект
+                 </a>
+              </p>
+            {% endif %}
         </div>
       </div>
     </div>

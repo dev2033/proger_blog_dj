@@ -20,12 +20,16 @@ class TagAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
-class CategoryAdmin(admin.ModelAdmin):
+class BookAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
 
-# class StudioAdmin(admin.ModelAdmin):
-#     form = PostAdminForm
+class CategoryBookAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -53,32 +57,12 @@ class PostAdmin(admin.ModelAdmin):
     get_image.short_description = 'Фото'
 
 
-# class MasterAdminForm(ModelForm):
-#
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.fields['image'].help_text = \
-#             mark_safe(
-#                 """
-#                 <span style="color:red; font-size:14px;">
-#                     Рекомендуемый размер изображения: Ширина - 810 пикселов |
-#                     Высота 1080 пикселов
-#                 </span>
-#                 """)
-
-
-# class MasterAdmin(admin.ModelAdmin):
-#     form = MasterAdminForm
-#
-#     class Meta:
-#         model = Master
-#         fields = '__all__'
-
-
 admin.site.register(Post, PostAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Project)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(BookCategory, CategoryBookAdmin)
+admin.site.register(Book, BookAdmin)
 
 admin.site.site_title = 'Управление сайтом'
 admin.site.site_header = 'Управление сайтом'

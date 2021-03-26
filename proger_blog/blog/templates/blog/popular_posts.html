@@ -13,7 +13,7 @@
           <h2 class="probootstrap-card-heading mb0">{{ post.title }}</h2>
             <p class="category">Автор: admin</p>
           <p>{{ post.content|truncatewords_html:20|safe }}</p>
-            <p><a href="{{ project.get_absolute_url }}">Читать далее...</a></p>
+            <p><a href="{{ post.get_absolute_url }}">Читать далее...</a></p>
         </div>
       </div>
     </div>
